@@ -13,6 +13,10 @@
 		5D24C45C257F08B70012C6D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D24C45A257F08B70012C6D3 /* Main.storyboard */; };
 		5D24C45E257F08BB0012C6D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D24C45D257F08BB0012C6D3 /* Assets.xcassets */; };
 		5D24C461257F08BB0012C6D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D24C45F257F08BB0012C6D3 /* LaunchScreen.storyboard */; };
+		5D24C46A257F08E20012C6D3 /* HomeSetsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D24C469257F08E20012C6D3 /* HomeSetsTableViewCell.swift */; };
+		5D24C46D257F08E80012C6D3 /* FlashcardSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D24C46C257F08E80012C6D3 /* FlashcardSet.swift */; };
+		5D24C470257F08EC0012C6D3 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D24C46F257F08EC0012C6D3 /* SetViewController.swift */; };
+		5D24C473257F08F10012C6D3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D24C472257F08F10012C6D3 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		5D24C45D257F08BB0012C6D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D24C460257F08BB0012C6D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D24C462257F08BB0012C6D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D24C469257F08E20012C6D3 /* HomeSetsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSetsTableViewCell.swift; sourceTree = "<group>"; };
+		5D24C46C257F08E80012C6D3 /* FlashcardSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardSet.swift; sourceTree = "<group>"; };
+		5D24C46F257F08EC0012C6D3 /* SetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
+		5D24C472257F08F10012C6D3 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +67,12 @@
 				5D24C454257F08B70012C6D3 /* AppDelegate.swift */,
 				5D24C456257F08B70012C6D3 /* SceneDelegate.swift */,
 				5D24C458257F08B70012C6D3 /* ViewController.swift */,
+				5D24C46C257F08E80012C6D3 /* FlashcardSet.swift */,
+				5D24C46F257F08EC0012C6D3 /* SetViewController.swift */,
 				5D24C45A257F08B70012C6D3 /* Main.storyboard */,
 				5D24C45D257F08BB0012C6D3 /* Assets.xcassets */,
+				5D24C472257F08F10012C6D3 /* NetworkManager.swift */,
+				5D24C469257F08E20012C6D3 /* HomeSetsTableViewCell.swift */,
 				5D24C45F257F08BB0012C6D3 /* LaunchScreen.storyboard */,
 				5D24C462257F08BB0012C6D3 /* Info.plist */,
 			);
@@ -137,7 +149,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D24C46D257F08E80012C6D3 /* FlashcardSet.swift in Sources */,
+				5D24C470257F08EC0012C6D3 /* SetViewController.swift in Sources */,
 				5D24C459257F08B70012C6D3 /* ViewController.swift in Sources */,
+				5D24C473257F08F10012C6D3 /* NetworkManager.swift in Sources */,
+				5D24C46A257F08E20012C6D3 /* HomeSetsTableViewCell.swift in Sources */,
 				5D24C455257F08B70012C6D3 /* AppDelegate.swift in Sources */,
 				5D24C457257F08B70012C6D3 /* SceneDelegate.swift in Sources */,
 			);
