@@ -14,6 +14,7 @@ class SetViewController: UIViewController {
     init(fs: FlashcardSet) {
         super.init(nibName: nil, bundle: nil)
         self.fset = fs
+
     }
     
     required init?(coder: NSCoder) {
@@ -23,8 +24,12 @@ class SetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Review"
+        view.backgroundColor = UIColor.black
         // Do any additional setup after loading the view.
     }
+    
+    
     
 
     /*

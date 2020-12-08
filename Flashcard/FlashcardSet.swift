@@ -8,5 +8,6 @@
 import Foundation
 struct FlashcardSet{
     var name: String
+    var id: Int
     public var flashcards: [String: String]
 }
