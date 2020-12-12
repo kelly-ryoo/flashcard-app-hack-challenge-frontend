@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LoginDelegate : class{
+    func pushLoginScreen()
+}
+
 class StartupViewController: UIViewController {
     
     var loginButton = UIButton()
@@ -19,7 +23,7 @@ class StartupViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         
-//        title = "Flashcard App Name"
+//      title = "Flashcard App Name"
         view.backgroundColor = .white
         
         appLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -39,6 +43,7 @@ class StartupViewController: UIViewController {
         loginButton.backgroundColor = UIColor.init(displayP3Red: 169/255, green: 202/255, blue: 151/255, alpha: 1)
         loginButton.layer.cornerRadius = 4
         loginButton.titleEdgeInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
+        loginButton.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
         view.addSubview(loginButton)
         
         signupButton.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +56,12 @@ class StartupViewController: UIViewController {
         
         setupConstraints()
         
+    }
+    
+    @objc func loginPressed(){
+        let vc = LoginViewController()
+       // vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func setupConstraints() {
@@ -91,4 +102,11 @@ class StartupViewController: UIViewController {
     }
 
     
+}
+
+extension StartupViewController: LoginDelegate{
+    func pushLoginScreen() {
+        
+    }
+
 }
