@@ -169,11 +169,15 @@ class SignUpViewController: UIViewController {
             emailText = emailTextField.text ?? ""
             passwordText = passwordTextField.text ?? ""
             
-            getRequest()
+            postRequest()
         }
             
-        func getRequest(){
+        func postRequest(){
             if emailText != "" && passwordText != ""{
+                //FIX
+                //POST REQUEST TO SEND DATA
+                NetworkManager.postUser(name: nameText, email: emailText, pass: passwordText)
+                //FIX
                 let vc = ViewController()
                 navigationController?.pushViewController(vc, animated: true)
             }
