@@ -13,6 +13,7 @@ class HomeSetsTableViewCell: UITableViewCell {
     private let name = UILabel()
     private let numOfTerms = UILabel()
     private let review = UIButton()
+    
     weak var delegate: ReviewPressed?
     
     public var id : Int = 0
@@ -55,9 +56,10 @@ class HomeSetsTableViewCell: UITableViewCell {
             containerView.centerXAnchor.constraint(equalTo:contentView.centerXAnchor),
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
             containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-
-            containerView.widthAnchor.constraint(equalToConstant: 300),
-            containerView.heightAnchor.constraint(equalToConstant: 150)
+            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            //containerView.widthAnchor.constraint(equalToConstant: 300),
+            //containerView.heightAnchor.constraint(equalToConstant: 150)
         ])
         
         NSLayoutConstraint.activate([
@@ -72,14 +74,14 @@ class HomeSetsTableViewCell: UITableViewCell {
             numOfTerms.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: padding)
         ])
         NSLayoutConstraint.activate([
-            review.topAnchor.constraint(equalTo: name.bottomAnchor, constant: padding),
-            review.leadingAnchor.constraint(equalTo: name.leadingAnchor),
-            review.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: padding)
+            review.topAnchor.constraint(equalTo: containerView.centerYAnchor),
+            //review.leadingAnchor.constraint(equalTo: numOfTerms.trailingAnchor, constant: padding),
+            review.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding)
         ])
         
     }
     
-    func configure(for homeSet: FlashcardSet){
+    func configure(for homeSet: Deck){
         self.name.text = homeSet.name
         self.numOfTerms.text = "Number of Items: " + String(homeSet.flashcards.count)
         self.id = homeSet.id

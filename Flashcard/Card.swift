@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct Card: Codable {
+    var term: String
+    var definition: String
+}
+
+//struct CardDataResponse: Codable {
+//    data
+//}

@@ -16,10 +16,10 @@ extension ViewController: ReviewPressed{
         var setIndex: Int
             setIndex = 0
         for f in homeSets {
-            //print(setIndex)
-            if f.id == selectedFSID{
-                pushNavViewController(selectedFS: homeSets[setIndex])
-                break
+            if f.id == selectedFSID{ //not sure why compare f.id and selectedFSID while using setIndex to index
+                let setViewController = SetViewController(fs: homeSets[setIndex])
+                navigationController?.pushViewController(setViewController, animated: true)
+                //break
             }
             setIndex+=1
         }
@@ -32,18 +32,19 @@ class ViewController: UIViewController {
     
     private let homeSetsTableView = UITableView()
     private let homeSetsReuseIdentifier = "homeFlashcardSetsReuse"
-    private var homeSets: [FlashcardSet] = []
+    private var homeSets: [Deck] = []
+    private var sets: [Deck] = []
     
     /* testing */
-    var f1 = FlashcardSet(name: "Spanish Vocab Set", id: 1, flashcards: ["Hi" : "Hola"])
-    var f2 = FlashcardSet(name: "[Italian 1201] U1", id: 2, flashcards: ["Hi" : "Ciao"])
-    var f3 = FlashcardSet(name: "Chinese Set", id: 3, flashcards: ["Hi" : "Nihao"])
-    var f4 = FlashcardSet(name: "jap1000", id: 4, flashcards: ["Hi" : "Konnichiwa", "Thanks":"Arigato", "Bye":"Sayonara","Good morning":"Ohayo"])
-    var f5 = FlashcardSet(name: "한국어 vocab",id: 5,  flashcards: ["Hi" : "Annyeonghaseyo",  "Bye": "Annyeong", "Thanks":"Gohmawo"])
-    var f6 = FlashcardSet(name: "ARAB 1201 - U3", id: 6, flashcards: ["Hi" : "Marhaba", "Thanks":"Shukram"])
-    var f7 = FlashcardSet(name: "french", id: 7, flashcards: ["Hi" : "Bonjour"])
-    var f8 = FlashcardSet(name: "ARAB 1201 - U4", id: 8, flashcards: ["Hi" : "Sabahal nour"])
-    var f9 = FlashcardSet(name: "Thai flashcards", id: 9, flashcards: ["Hi" : "Sawahdesee"])
+//    var f1 = FlashcardSet(id: 1, name: "Spanish Vocab Set", flashcards: [Flashcard(term: "Hi", definition: "Hola")])
+//    var f2 = FlashcardSet(id: 2, name: "[Italian 1201] U1", flashcards: [Flashcard(term: "Hi", definition: "Ciao")])
+//    var f3 = FlashcardSet(id: 3, name: "Chinese Set", flashcards: [Flashcard(term: "Hi", definition: "Nihao")])
+//    var f4 = FlashcardSet(id: 4, name: "jap1000", flashcards: [Flashcard(term: "Hi", definition: "Konnichiwa"), Flashcard(term: "Thanks", definition: "Arigato"), Flashcard(term: "Bye", definition: "Sayonara"), Flashcard(term: "Good Morning", definition: "Ohayo")])
+//    var f5 = FlashcardSet(id: 5, name: "한국어 vocab",  flashcards: [Flashcard(term: "Hi", definition: "Annyeonhaseyo"), Flashcard(term: "Bye", definition: "Annyeon"), Flashcard(term: "Thanks", definition: "Gohmawo")])
+//    var f6 = FlashcardSet(id: 6, name: "ARAB 1201 - U3", flashcards: [Flashcard(term: "Hi", definition: "Marhaba"), Flashcard(term: "Thanks", definition: "Shukram")])
+//    var f7 = FlashcardSet(id: 7, name: "French", flashcards: [Flashcard(term: "Hi", definition: "Bonjour")])
+//    var f8 = FlashcardSet(id: 8, name: "ARAB 1201 - U4", flashcards: [Flashcard(term: "Hi", definition: "Sabahal nour")])
+//    var f9 = FlashcardSet(id: 9, name: "Thai flashcards", flashcards: [Flashcard(term: "Hi", definition: "Sawahdesee")])
 
     
     override func viewDidLoad() {
@@ -56,7 +57,7 @@ class ViewController: UIViewController {
         homeSetsTableView.dataSource = self
         homeSetsTableView.backgroundColor = UIColor.white
         homeSetsTableView.translatesAutoresizingMaskIntoConstraints = false
-        homeSetsTableView.separatorStyle = .none
+        //homeSetsTableView.separatorStyle = .none
         homeSetsTableView.register(HomeSetsTableViewCell.self, forCellReuseIdentifier: homeSetsReuseIdentifier)
         view.addSubview(homeSetsTableView)
 //        .addTarget(self, action: #selector(pushNavViewController), for: .touchUpInside)
@@ -69,10 +70,11 @@ class ViewController: UIViewController {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            homeSetsTableView.centerXAnchor.constraint(equalTo:view.centerXAnchor),
-            homeSetsTableView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            homeSetsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 20),
-            homeSetsTableView.widthAnchor.constraint(equalToConstant: 300),
+            //homeSetsTableView.centerXAnchor.constraint(equalTo:view.centerXAnchor),
+            homeSetsTableView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor),
+            homeSetsTableView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor),
+            homeSetsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            homeSetsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
 
         ])
     }
@@ -85,15 +87,32 @@ class ViewController: UIViewController {
          })
          */
         
-        self.homeSets = [f1, f2, f3, f4, f5, f6, f7, f8]
-        self.homeSetsTableView.reloadData()
+        //self.homeSets = [f1, f2, f3, f4, f5, f6, f7, f8]
+//        self.homeSetsTableView.reloadData()
+        NetworkManager.getFlashcardSets { flashcardSets in
+            self.sets = flashcardSets
+            
+            DispatchQueue.main.async {
+                self.homeSetsTableView.reloadData()
+            }
+        }
     }
     
-    public func pushNavViewController(selectedFS: FlashcardSet){
+    public func pushNavViewController(selectedFS: Deck){
         print(selectedFS.id)
         let sv = SetViewController(fs: selectedFS)
         present(sv, animated: true, completion: nil)
     }
+    
+//    private func getFlashcardSets() {
+//        NetworkManager.getFlashcardSets { flashcardSets in
+//            self.sets = flashcardSets
+//
+//            DispatchQueue.main.async {
+//                self.homeSetsTableView.reloadData()
+//            }
+//        }
+//    }
 
 
 }
@@ -105,7 +124,9 @@ extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let fs = homeSets[indexPath.row]
-        let setViewController = SetViewController(fs: fs)
+        let cell = tableView.cellForRow(at: indexPath) as! HomeSetsTableViewCell
+        
+        //let setViewController = SetViewController(fs: fs)
         //navigationController?.pushViewController(setViewController, animated: true)
         //don't need it cuz we present??
     }
@@ -123,7 +144,6 @@ extension ViewController: UITableViewDataSource {
         cell.delegate = self
 
         return cell
-//        return UITableViewCell()
     }
 }
 
