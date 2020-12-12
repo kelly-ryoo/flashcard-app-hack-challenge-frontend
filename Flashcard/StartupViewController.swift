@@ -52,6 +52,8 @@ class StartupViewController: UIViewController {
         signupButton.titleLabel?.font = UIFont.systemFont(ofSize: 18.0, weight: .bold)
         //signupButton.backgroundColor = .white
         signupButton.layer.cornerRadius = 4
+        signupButton.addTarget(self, action: #selector(signupPressed), for: .touchUpInside)
+
         view.addSubview(signupButton)
         
         setupConstraints()
@@ -60,6 +62,13 @@ class StartupViewController: UIViewController {
     
     @objc func loginPressed(){
         let vc = LoginViewController()
+       // vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    @objc func signupPressed(){
+        let vc = SignUpViewController()
        // vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }

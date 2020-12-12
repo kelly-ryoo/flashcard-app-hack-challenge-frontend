@@ -148,10 +148,9 @@ class LoginViewController: UIViewController {
         
     func authenticateLogin(){
         if emailText == getEmail && passwordText == getPassword{
-            
-            let secondViewController:ViewController = ViewController()
-
-            self.present(secondViewController, animated: true, completion: nil)
+            let vc = ViewController()
+           // vc.delegate = self
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     
