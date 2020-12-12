@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,7 @@
 		5D24C473257F08F10012C6D3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D24C472257F08F10012C6D3 /* NetworkManager.swift */; };
 		C7D203E62584491800D80880 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D203E52584491800D80880 /* Card.swift */; };
 		C7D203EE258449AF00D80880 /* DeckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D203ED258449AF00D80880 /* DeckTableViewCell.swift */; };
+		C7D203F525844DF700D80880 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D203F425844DF700D80880 /* StartupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		A681FA89542C12630268952C /* Pods-Flashcard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flashcard.debug.xcconfig"; path = "Target Support Files/Pods-Flashcard/Pods-Flashcard.debug.xcconfig"; sourceTree = "<group>"; };
 		C7D203E52584491800D80880 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		C7D203ED258449AF00D80880 /* DeckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTableViewCell.swift; sourceTree = "<group>"; };
+		C7D203F425844DF700D80880 /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +62,6 @@
 				A681FA89542C12630268952C /* Pods-Flashcard.debug.xcconfig */,
 				78489E01E80B75E0D3F71050 /* Pods-Flashcard.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -87,6 +88,7 @@
 			children = (
 				5D24C454257F08B70012C6D3 /* AppDelegate.swift */,
 				5D24C456257F08B70012C6D3 /* SceneDelegate.swift */,
+				C7D203F425844DF700D80880 /* StartupViewController.swift */,
 				5D24C458257F08B70012C6D3 /* ViewController.swift */,
 				5D24C46F257F08EC0012C6D3 /* SetViewController.swift */,
 				5D24C469257F08E20012C6D3 /* HomeSetsTableViewCell.swift */,
@@ -228,6 +230,7 @@
 				5D24C470257F08EC0012C6D3 /* SetViewController.swift in Sources */,
 				5D24C459257F08B70012C6D3 /* ViewController.swift in Sources */,
 				C7D203EE258449AF00D80880 /* DeckTableViewCell.swift in Sources */,
+				C7D203F525844DF700D80880 /* StartupViewController.swift in Sources */,
 				5D24C473257F08F10012C6D3 /* NetworkManager.swift in Sources */,
 				5D24C46A257F08E20012C6D3 /* HomeSetsTableViewCell.swift in Sources */,
 				5D24C455257F08B70012C6D3 /* AppDelegate.swift in Sources */,
