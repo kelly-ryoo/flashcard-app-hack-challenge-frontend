@@ -11,10 +11,7 @@ struct Deck: Codable {
     var id: Int
     var name: String
     var userId: Int
-    var tags: [Int]
-    //public var flashcards: [String: String]
-    //public var terms: [String]
-    //public var cardsdefinitions: [String]
+    //var tags: [Int]
     public var cards: [Card]
     // flashcard is another class
     // flashcards is a list of flashcard

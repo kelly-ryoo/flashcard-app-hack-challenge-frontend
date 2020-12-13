@@ -9,9 +9,24 @@ import UIKit
 
 protocol ReviewPressed : class{
     func pushSetViewController(selectedFSID: Int)
+    func pushReviewSetViewController(selectedFSID: Int)
+
 }
 
 extension ViewController: ReviewPressed{
+    func pushReviewSetViewController(selectedFSID: Int) {
+        var setIndex: Int
+            setIndex = 0
+        for f in homeSets {
+            if f.id == selectedFSID{ //not sure why compare f.id and selectedFSID while using setIndex to index
+                let reviewSetViewController = ReviewSetViewController(fs: homeSets[setIndex])
+                navigationController?.pushViewController(reviewSetViewController, animated: true)
+                //break
+            }
+            setIndex+=1
+        }
+    }
+    
     func pushSetViewController(selectedFSID: Int) {
         var setIndex: Int
             setIndex = 0
@@ -34,6 +49,7 @@ class ViewController: UIViewController {
     private let homeSetsReuseIdentifier = "homeFlashcardSetsReuse"
     private var homeSets: [Deck] = []
     private var sets: [Deck] = []
+
     
     /* testing */
 //  var f1 = Deck(id: 1, name: "Spanish", userId: 1, tags: [], cards: [Card(id: 1, front: "Hola", back: "Hello")])
@@ -50,6 +66,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         /* basic setup*/
         self.navigationItem.title = "Flashcard App"
         
@@ -66,7 +83,13 @@ class ViewController: UIViewController {
 
     }
     
+    @objc func dismissViewController(){
+        print("Dismissed")
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     private func setupConstraints() {
+
         NSLayoutConstraint.activate([
             //homeSetsTableView.centerXAnchor.constraint(equalTo:view.centerXAnchor),
             homeSetsTableView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor),

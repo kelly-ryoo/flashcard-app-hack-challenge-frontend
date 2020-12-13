@@ -12,7 +12,9 @@ class HomeSetsTableViewCell: UITableViewCell {
     private let containerView = UIView()
     private let name = UILabel()
     private let numOfTerms = UILabel()
+    private let seeTerms = UIButton()
     private let review = UIButton()
+    
     
     weak var delegate: ReviewPressed?
     
@@ -38,19 +40,25 @@ class HomeSetsTableViewCell: UITableViewCell {
         numOfTerms.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(numOfTerms)
         
-        review.setTitle("review", for: .normal)
+        seeTerms.setTitle("See Terms", for: .normal)
+        seeTerms.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(seeTerms)
+        seeTerms.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        
+        review.setTitle("Review", for: .normal)
         review.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(review)
-                
-        review.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        review.addTarget(self, action: #selector(reviewPressed), for: .touchUpInside)
+
 
         setUpConstraints()
     }
     
-    
+
     private func setUpConstraints(){
         
         let padding: CGFloat = 10
+
         
         NSLayoutConstraint.activate([
             containerView.centerXAnchor.constraint(equalTo:contentView.centerXAnchor),
@@ -74,8 +82,13 @@ class HomeSetsTableViewCell: UITableViewCell {
             numOfTerms.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: padding)
         ])
         NSLayoutConstraint.activate([
-            review.topAnchor.constraint(equalTo: containerView.centerYAnchor),
+            seeTerms.topAnchor.constraint(equalTo: containerView.centerYAnchor),
             //review.leadingAnchor.constraint(equalTo: numOfTerms.trailingAnchor, constant: padding),
+            seeTerms.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15)
+        ])
+        
+        NSLayoutConstraint.activate([
+            review.topAnchor.constraint(equalTo: seeTerms.topAnchor, constant: 10),
             review.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding)
         ])
         
@@ -107,6 +120,10 @@ class HomeSetsTableViewCell: UITableViewCell {
     @objc func buttonPressed(){
         //name.text="changed"
         delegate?.pushSetViewController(selectedFSID: id)
+    }
+    
+    @objc func reviewPressed(){
+        delegate?.pushReviewSetViewController(selectedFSID: id)
     }
 
 }

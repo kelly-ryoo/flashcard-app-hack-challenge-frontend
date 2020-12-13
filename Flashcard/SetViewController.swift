@@ -12,6 +12,8 @@ class SetViewController: UIViewController {
     private let setTableView = UITableView()
     private let deckReuseIdentifier = "setReuse"
     private var fset: Deck!
+    private let backButton = UIButton()
+
     
 
     init(fs: Deck) {
@@ -26,6 +28,13 @@ class SetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backButton.setTitle("< Back", for: .normal)
+        backButton.setTitleColor(.black, for: .normal)
+        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 18.0, weight: .bold)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(backButton)
+        backButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
 
         title = "Review Set"
         view.backgroundColor = UIColor.white
@@ -40,9 +49,20 @@ class SetViewController: UIViewController {
         setupConstraints()
     }
     
+    @objc func dismissViewController(){
+        print("Dismissed")
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            setTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant:15),
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5)
+            ])
+        
+        NSLayoutConstraint.activate([
+            setTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant:30),
             setTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             setTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             setTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
