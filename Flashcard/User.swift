@@ -8,12 +8,17 @@
 import Foundation
 
 struct User: Codable {
+    var sessionToken: String
+    var sessionExpiration: String
+    var updateToken: String
+    
+    var id: Int
     var email: String
     var name: String
-    var password: String
+    var decks: [Deck] = []
 }
 
 struct UserDataResponse: Codable {
-    var data: [User]
+    var data: User
 }
 

@@ -10,6 +10,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     private var user: User!
+    static public var loggedIn: Bool = false
 
     
     private let backButton = UIButton()
@@ -150,23 +151,20 @@ class LoginViewController: UIViewController {
     }
         
     func authenticateLogin(){
-        NetworkManager.getUser(completion: { userData in
-            for userI in userData{
-                if userI.email == self.emailText {
-                    self.user = userI
-                    break
+        //post
+        NetworkManager.postUserLogin(email: emailText, password: passwordText) { (userData) in
+                //check if success
+                self.user = userData
+                print("it goes to authentication")
+                DispatchQueue.main.async {
+                    print(self.user.email)
+                    let vc = ViewController()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    vc.getDeck(deck: self.user.decks)
                 }
-            }
-            DispatchQueue.main.async {
-                self.emailText = self.user.email
-                self.passwordText = self.user.password
-            }
-        })
-        if emailText == getEmail && passwordText == getPassword{
-            let vc = ViewController()
-           // vc.delegate = self
-            navigationController?.pushViewController(vc, animated: true)
+            
         }
+        
     }
     
 

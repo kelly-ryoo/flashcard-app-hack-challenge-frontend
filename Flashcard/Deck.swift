@@ -10,10 +10,12 @@ import Foundation
 struct Deck: Codable {
     var id: Int
     var name: String
+    var userId: Int
+    var tags: [Int]
     //public var flashcards: [String: String]
     //public var terms: [String]
-    //public var definitions: [String]
-    public var flashcards: [Card]
+    //public var cardsdefinitions: [String]
+    public var cards: [Card]
     // flashcard is another class
     // flashcards is a list of flashcard
     // one flashcard has 1 term and 1 definition

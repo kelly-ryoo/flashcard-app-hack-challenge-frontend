@@ -55,7 +55,7 @@ class SetViewController: UIViewController {
 
 extension SetViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fset.flashcards.count
+        return fset.cards.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

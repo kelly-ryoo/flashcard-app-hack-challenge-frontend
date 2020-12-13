@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     private var sets: [Deck] = []
     
     /* testing */
-//    var f1 = FlashcardSet(id: 1, name: "Spanish Vocab Set", flashcards: [Flashcard(term: "Hi", definition: "Hola")])
+//  var f1 = Deck(id: 1, name: "Spanish", userId: 1, tags: [], cards: [Card(id: 1, front: "Hola", back: "Hello")])
 //    var f2 = FlashcardSet(id: 2, name: "[Italian 1201] U1", flashcards: [Flashcard(term: "Hi", definition: "Ciao")])
 //    var f3 = FlashcardSet(id: 3, name: "Chinese Set", flashcards: [Flashcard(term: "Hi", definition: "Nihao")])
 //    var f4 = FlashcardSet(id: 4, name: "jap1000", flashcards: [Flashcard(term: "Hi", definition: "Konnichiwa"), Flashcard(term: "Thanks", definition: "Arigato"), Flashcard(term: "Bye", definition: "Sayonara"), Flashcard(term: "Good Morning", definition: "Ohayo")])
@@ -62,9 +62,7 @@ class ViewController: UIViewController {
         view.addSubview(homeSetsTableView)
 //        .addTarget(self, action: #selector(pushNavViewController), for: .touchUpInside)
 
-        
-        getSets()
-        setupConstraints()
+     setupConstraints()
 
     }
     
@@ -79,23 +77,30 @@ class ViewController: UIViewController {
         ])
     }
     
-    private func getSets(){
-        /* do something with network manager
+    public func getDeck(deck: [Deck]){
+        /* 
          NetworkManager.getSets(completion: { fs in
              self.homeSets = fs
-             self.homeSetsTableView.reloadData()
+            self.homeSetsTableView.reloadData()
          })
          */
         
+        //self.sets = deck
+        self.sets = deck
+        self.homeSets = deck
+        DispatchQueue.main.async {
+            self.homeSetsTableView.reloadData()
+        }
+        
         //self.homeSets = [f1, f2, f3, f4, f5, f6, f7, f8]
 //        self.homeSetsTableView.reloadData()
-        NetworkManager.getFlashcardSets { flashcardSets in
+        /*NetworkManager.getFlashcardSets { flashcardSets in
             self.sets = flashcardSets
             
             DispatchQueue.main.async {
                 self.homeSetsTableView.reloadData()
             }
-        }
+        }*/
     }
     
     public func pushNavViewController(selectedFS: Deck){

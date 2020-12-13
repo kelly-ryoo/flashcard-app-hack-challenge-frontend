@@ -83,7 +83,7 @@ class HomeSetsTableViewCell: UITableViewCell {
     
     func configure(for homeSet: Deck){
         self.name.text = homeSet.name
-        self.numOfTerms.text = "Number of Items: " + String(homeSet.flashcards.count)
+        self.numOfTerms.text = "Number of Items: " + String(homeSet.cards.count)
         self.id = homeSet.id
     }
     

@@ -10,11 +10,12 @@ import Alamofire
 
 class NetworkManager {
     
-    private static let host = "https://flashcard-app-backend.herokuapp.com/decks/"
-    private static let hostUser = "https://flashcard-app-backend.herokuapp.com/users/1"
-    private static let postUser = "https://flashcard-app-backend.herokuapp.com/users/"
+    private static let getUserH = "https://flashcard-app-backend.herokuapp.com/users/"
+    private static let postUserLoginH = "https://flashcard-app-backend.herokuapp.com/login/"
+    private static let postUserH = "https://flashcard-app-backend.herokuapp.com/register/"
 
-    
+
+    /*
     static func getFlashcardSets(completion: @escaping ([Deck]) -> Void) {
         let endpoint = host
         AF.request(endpoint, method: .get).validate().responseData { response in
@@ -31,12 +32,12 @@ class NetworkManager {
             }
         }
     }
-    
+ */
     
     
     //log in
-    static func getUser(completion: @escaping ([User]) -> Void){
-        let endpoint = host
+    static func getUser(completion: @escaping (User) -> Void){
+        let endpoint = getUserH
         AF.request(endpoint, method: .get).validate().responseData { response in
             switch response.result {
             case .success(let data):
@@ -51,21 +52,65 @@ class NetworkManager {
             }
         }
     }
-
-    //sign up
-    static func postUser(name: String, email: String, pass: String) {
+    
+    static func postUserLogin(email: String, password: String, completion: @escaping (User) -> Void) {
+        
+        print(email)
+        print(password)
      
      let parameters: Parameters = [
-       "username" : email,
-       "name" : name
+       "email" : email,
+       "password" : password
      ]
              
-     AF.request(postUser, parameters: parameters).validate().responseJSON { response in
+        AF.request(postUserLoginH, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseData { response in
+    // AF.request(postUserLoginH, parameters: parameters).validate().responseJSON { response in
+            switch response.result {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                if let userData = try? jsonDecoder.decode(UserDataResponse.self, from: data) {
+                    let data = userData.data
+                    completion(data)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            /*
        switch response.result {
        case .success(let data):
-            print("success")
+            print("success logging in")
+            completion()
        case .failure(let error):
             print(error.localizedDescription)
+            completion()
+       }
+ */
+     }
+    }
+
+    //sign up
+    static func postUserSignUp(name: String, email: String, pass: String, completion: @escaping (Bool) -> Void) {
+        print(email)
+        print(pass)
+        print(name)
+     let parameters: Parameters = [
+        "email" : email,
+        "password": pass,
+        "name" : name
+
+     ]
+        
+        AF.request(postUserH, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseData { response in
+     //AF.request(postUserH, parameters: parameters).validate().responseJSON { response in
+       switch response.result {
+       case .success(let data):
+            print("success signing up")
+            completion(true)
+       case .failure(let error):
+            print(error.localizedDescription)
+            print("FAILED")
+            completion(false)
        }
      }
     }
