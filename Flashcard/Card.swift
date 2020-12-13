@@ -8,8 +8,9 @@
 import Foundation
 
 struct Card: Codable {
-    var term: String
-    var definition: String
+    var id: Int
+    var front: String
+    var back: String
 }
 
 //struct CardDataResponse: Codable {

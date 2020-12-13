@@ -31,7 +31,7 @@ class SignUpViewController: UIViewController {
 
         override func viewDidLoad() {
             super.viewDidLoad()
-            
+                        
             backButton.setTitle("< Back", for: .normal)
             backButton.setTitleColor(.black, for: .normal)
             backButton.titleLabel?.font = UIFont.systemFont(ofSize: 18.0, weight: .bold)
@@ -169,13 +169,18 @@ class SignUpViewController: UIViewController {
             emailText = emailTextField.text ?? ""
             passwordText = passwordTextField.text ?? ""
             
-            getRequest()
+            postRequest()
         }
             
-        func getRequest(){
+        func postRequest(){
             if emailText != "" && passwordText != ""{
-                let vc = ViewController()
-                navigationController?.pushViewController(vc, animated: true)
+                //POST REQUEST TO SEND DATA
+                NetworkManager.postUserSignUp(name: nameText, email: emailText, pass: passwordText) { (isLoggedIn) in
+                    if isLoggedIn == true{
+                        let vc = ViewController()
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
             }
         }
         

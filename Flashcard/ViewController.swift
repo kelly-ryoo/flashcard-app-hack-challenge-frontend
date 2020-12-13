@@ -9,9 +9,24 @@ import UIKit
 
 protocol ReviewPressed : class{
     func pushSetViewController(selectedFSID: Int)
+    func pushReviewSetViewController(selectedFSID: Int)
+
 }
 
 extension ViewController: ReviewPressed{
+    func pushReviewSetViewController(selectedFSID: Int) {
+        var setIndex: Int
+            setIndex = 0
+        for f in homeSets {
+            if f.id == selectedFSID{ //not sure why compare f.id and selectedFSID while using setIndex to index
+                let reviewSetViewController = ReviewSetViewController(fs: homeSets[setIndex])
+                navigationController?.pushViewController(reviewSetViewController, animated: true)
+                //break
+            }
+            setIndex+=1
+        }
+    }
+    
     func pushSetViewController(selectedFSID: Int) {
         var setIndex: Int
             setIndex = 0
@@ -34,9 +49,10 @@ class ViewController: UIViewController {
     private let homeSetsReuseIdentifier = "homeFlashcardSetsReuse"
     private var homeSets: [Deck] = []
     private var sets: [Deck] = []
+
     
     /* testing */
-//    var f1 = FlashcardSet(id: 1, name: "Spanish Vocab Set", flashcards: [Flashcard(term: "Hi", definition: "Hola")])
+//  var f1 = Deck(id: 1, name: "Spanish", userId: 1, tags: [], cards: [Card(id: 1, front: "Hola", back: "Hello")])
 //    var f2 = FlashcardSet(id: 2, name: "[Italian 1201] U1", flashcards: [Flashcard(term: "Hi", definition: "Ciao")])
 //    var f3 = FlashcardSet(id: 3, name: "Chinese Set", flashcards: [Flashcard(term: "Hi", definition: "Nihao")])
 //    var f4 = FlashcardSet(id: 4, name: "jap1000", flashcards: [Flashcard(term: "Hi", definition: "Konnichiwa"), Flashcard(term: "Thanks", definition: "Arigato"), Flashcard(term: "Bye", definition: "Sayonara"), Flashcard(term: "Good Morning", definition: "Ohayo")])
@@ -50,6 +66,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         /* basic setup*/
         self.navigationItem.title = "Flashcard App"
         
@@ -62,13 +79,17 @@ class ViewController: UIViewController {
         view.addSubview(homeSetsTableView)
 //        .addTarget(self, action: #selector(pushNavViewController), for: .touchUpInside)
 
-        
-        getSets()
-        setupConstraints()
+     setupConstraints()
 
     }
     
+    @objc func dismissViewController(){
+        print("Dismissed")
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     private func setupConstraints() {
+
         NSLayoutConstraint.activate([
             //homeSetsTableView.centerXAnchor.constraint(equalTo:view.centerXAnchor),
             homeSetsTableView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor),
@@ -79,23 +100,30 @@ class ViewController: UIViewController {
         ])
     }
     
-    private func getSets(){
-        /* do something with network manager
+    public func getDeck(deck: [Deck]){
+        /* 
          NetworkManager.getSets(completion: { fs in
              self.homeSets = fs
-             self.homeSetsTableView.reloadData()
+            self.homeSetsTableView.reloadData()
          })
          */
         
+        //self.sets = deck
+        self.sets = deck
+        self.homeSets = deck
+        DispatchQueue.main.async {
+            self.homeSetsTableView.reloadData()
+        }
+        
         //self.homeSets = [f1, f2, f3, f4, f5, f6, f7, f8]
 //        self.homeSetsTableView.reloadData()
-        NetworkManager.getFlashcardSets { flashcardSets in
+        /*NetworkManager.getFlashcardSets { flashcardSets in
             self.sets = flashcardSets
             
             DispatchQueue.main.async {
                 self.homeSetsTableView.reloadData()
             }
-        }
+        }*/
     }
     
     public func pushNavViewController(selectedFS: Deck){

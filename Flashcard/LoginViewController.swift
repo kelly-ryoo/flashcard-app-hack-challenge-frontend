@@ -9,6 +9,10 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    private var user: User!
+    static public var loggedIn: Bool = false
+
+    
     private let backButton = UIButton()
     
     private let loginLabel = UILabel()
@@ -147,11 +151,20 @@ class LoginViewController: UIViewController {
     }
         
     func authenticateLogin(){
-        if emailText == getEmail && passwordText == getPassword{
-            let vc = ViewController()
-           // vc.delegate = self
-            navigationController?.pushViewController(vc, animated: true)
+        //post
+        NetworkManager.postUserLogin(email: emailText, password: passwordText) { (userData) in
+                //check if success
+                self.user = userData
+                print("it goes to authentication")
+                DispatchQueue.main.async {
+                    print(self.user.email)
+                    let vc = ViewController()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    vc.getDeck(deck: self.user.decks)
+                }
+            
         }
+        
     }
     
 

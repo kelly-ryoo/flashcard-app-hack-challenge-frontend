@@ -68,8 +68,8 @@ class DeckTableViewCell: UITableViewCell {
     }
     
     func configure(for set: Deck, index: Int){
-        self.term.text = set.flashcards[index].term
-        self.definition.text = set.flashcards[index].definition
+        self.term.text = set.cards[index].front
+        self.definition.text = set.cards[index].back
         self.id = set.id
     }
     
