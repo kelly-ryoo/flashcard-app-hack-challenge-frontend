@@ -26,6 +26,7 @@ class CreateDeckViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.barTintColor = .white
 
         saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveDeck))
         self.navigationItem.rightBarButtonItem = saveButton

@@ -13,6 +13,9 @@ class DeckTableViewCell: UITableViewCell {
     private let term = UILabel()
     private let definition = UILabel()
     
+    private let starImageView = UIImageView(image: UIImage(named: "star2"))
+    var clicked: Bool = false
+    
     public var id : Int = 0
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -35,6 +38,11 @@ class DeckTableViewCell: UITableViewCell {
         definition.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(definition)
         
+        starImageView.translatesAutoresizingMaskIntoConstraints = false
+        starImageView.contentMode = .scaleAspectFit
+        starImageView.isHidden = true
+        contentView.addSubview(starImageView)
+        
         setUpConstraints()
         
     }
@@ -46,6 +54,7 @@ class DeckTableViewCell: UITableViewCell {
     private func setUpConstraints(){
         
         let padding: CGFloat = 10
+        let starImageSize: CGFloat = 30
         
         NSLayoutConstraint.activate([
             containerView.centerXAnchor.constraint(equalTo:contentView.centerXAnchor),
@@ -65,11 +74,22 @@ class DeckTableViewCell: UITableViewCell {
             definition.leadingAnchor.constraint(equalTo: term.leadingAnchor)
         ])
         
+        NSLayoutConstraint.activate([
+            starImageView.widthAnchor.constraint(equalToConstant: starImageSize),
+            starImageView.heightAnchor.constraint(equalToConstant: starImageSize),
+            starImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            starImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
+        ])
+        
     }
     override func layoutSubviews() {
         super.layoutSubviews()
 
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+    }
+    
+    func toggleStar(for clicked: Bool) {
+        starImageView.isHidden = !clicked
     }
     
     func configure(for set: Deck, index: Int){

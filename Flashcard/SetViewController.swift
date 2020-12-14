@@ -17,8 +17,6 @@ class SetViewController: UIViewController {
     private var fset: Deck!
     //private let backButton = UIButton()
 
-    
-
     init(fs: Deck) {
         super.init(nibName: nil, bundle: nil)
         self.fset = fs
@@ -113,7 +111,6 @@ extension SetViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: deckReuseIdentifier, for: indexPath) as? DeckTableViewCell else { return UITableViewCell() }
-        //let fset = fset[indexPath.row]
         cell.configure(for: fset, index: indexPath.row) //fset.flashcards[indexPath.row]
         //cell.delegate = self
 
@@ -128,9 +125,9 @@ extension SetViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let fs = fset
         let cell = tableView.cellForRow(at: indexPath) as! DeckTableViewCell
-
+        cell.clicked.toggle()
+        cell.toggleStar(for: cell.clicked)
     }
 }
 

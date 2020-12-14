@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
         loginContLabel.text = "Log in to continue"
         loginContLabel.translatesAutoresizingMaskIntoConstraints = false
         loginContLabel.font = UIFont.systemFont(ofSize: 16.0)
-        loginContLabel.textColor = UIColor(red: 178/255, green: 178/255, blue: 178/255, alpha: 1)
+        loginContLabel.textColor = UIColor(red: 169/255, green: 202/255, blue: 151/255, alpha: 1)
         view.addSubview(loginContLabel)
         
         

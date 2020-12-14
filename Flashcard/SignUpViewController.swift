@@ -49,10 +49,11 @@ class SignUpViewController: UIViewController {
             signUpLabel.font = UIFont.systemFont(ofSize: 25.0, weight: .bold)
             signUpLabel.textColor = UIColor(red: 169/255, green: 202/255, blue: 151/255, alpha: 1)
             view.addSubview(signUpLabel)
+            
             signUpContLabel.text = "Sign up to join"
             signUpContLabel.translatesAutoresizingMaskIntoConstraints = false
             signUpContLabel.font = UIFont.systemFont(ofSize: 16.0)
-            signUpContLabel.textColor = UIColor(red: 178/255, green: 178/255, blue: 178/255, alpha: 1)
+            signUpContLabel.textColor = UIColor(red: 169/255, green: 202/255, blue: 151/255, alpha: 1)
             view.addSubview(signUpContLabel)
             
             
