@@ -8,6 +8,8 @@
 import Foundation
 
 struct User: Codable {
+    static var current: User?
+    
     var sessionToken: String
     var sessionExpiration: String
     var updateToken: String

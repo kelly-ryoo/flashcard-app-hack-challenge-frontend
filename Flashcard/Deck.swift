@@ -1,5 +1,5 @@
 //
-//  Set.swift
+//  Deck.swift
 //  Flashcard
 //
 //  Created by Kelly Ryoo on 12/3/20.
@@ -11,7 +11,7 @@ struct Deck: Codable {
     var id: Int
     var name: String
     var userId: Int
-    //var tags: [Int]
+    var tags: [Int]
     public var cards: [Card]
     // flashcard is another class
     // flashcards is a list of flashcard
@@ -19,7 +19,7 @@ struct Deck: Codable {
 }
 
 struct DeckDataResponse: Codable {
-    var data: [Deck]
+    var data: Deck
 }
 
 //struct FlashcardSet: Codable {

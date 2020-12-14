@@ -21,17 +21,19 @@ class StartupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
 //      title = "Flashcard App Name"
         view.backgroundColor = .white
         
         appLabel.translatesAutoresizingMaskIntoConstraints = false
-        appLabel.text = "Flashcard App Name"
-        appLabel.textColor = .black
+        appLabel.text = "LetQuiz"
+        appLabel.textColor = UIColor.init(red: 137/255, green: 163/255, blue: 122/255, alpha: 1) // #89a37a
+        appLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)
         view.addSubview(appLabel)
         
-        image = UIImageView(image: UIImage(named: "insert_image"))
+        image = UIImageView(image: UIImage(named: "letquiz"))
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
         view.addSubview(image)
@@ -39,10 +41,10 @@ class StartupViewController: UIViewController {
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.setTitle("Log In", for: .normal)
         loginButton.setTitleColor(.white, for: .normal)
-        loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 18.0, weight: .bold)
-        loginButton.backgroundColor = UIColor.init(displayP3Red: 169/255, green: 202/255, blue: 151/255, alpha: 1)
+        loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        loginButton.backgroundColor = UIColor.init(displayP3Red: 169/255, green: 202/255, blue: 151/255, alpha: 1) // #a9ca97
         loginButton.layer.cornerRadius = 4
-        loginButton.titleEdgeInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
+        loginButton.titleEdgeInsets = UIEdgeInsets(top: 5.0, left: 7.5, bottom: 5.0, right: 7.5)
         loginButton.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
         view.addSubview(loginButton)
         
@@ -83,13 +85,13 @@ class StartupViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             appLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            appLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
-            appLabel.heightAnchor.constraint(equalToConstant: 24)
+            appLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
+            appLabel.heightAnchor.constraint(equalToConstant: 40)
             ])
         
         NSLayoutConstraint.activate([
             image.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            image.topAnchor.constraint(equalTo: appLabel.bottomAnchor, constant: 20),
+            image.topAnchor.constraint(equalTo: appLabel.bottomAnchor, constant: 50),
             image.widthAnchor.constraint(equalToConstant: imageWidth),
             image.heightAnchor.constraint(equalToConstant: imageHeight)
             
@@ -99,7 +101,7 @@ class StartupViewController: UIViewController {
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -spacing),
             loginButton.heightAnchor.constraint(equalToConstant: 40),
-            loginButton.widthAnchor.constraint(equalToConstant: 75)
+            loginButton.widthAnchor.constraint(equalToConstant: 125)
             ])
 
         NSLayoutConstraint.activate([

@@ -19,7 +19,7 @@ class ReviewSetViewController: UIViewController {
     
     private var tOrD = UILabel() //term or definition
     
-    private let backButton = UIButton()
+//    private let backButton = UIButton()
 
     init(fs: Deck) {
         self.fset = fs
@@ -37,14 +37,17 @@ class ReviewSetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backButton.setTitle("< Back", for: .normal)
-        backButton.setTitleColor(.black, for: .normal)
-        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 18.0, weight: .bold)
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(backButton)
-        backButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        
+//        backButton.setTitle("< Back", for: .normal)
+//        backButton.setTitleColor(.black, for: .normal)
+//        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 18.0, weight: .bold)
+//        backButton.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(backButton)
+//        backButton.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
         
         view.backgroundColor = UIColor.white
+        
         cards = fset.cards
         card = cards[count]
         
@@ -99,10 +102,10 @@ class ReviewSetViewController: UIViewController {
     
     private func setUpConstraints(){
         
-        NSLayoutConstraint.activate([
-            backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant:15),
-            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15)
-            ])
+//        NSLayoutConstraint.activate([
+//            backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant:15),
+//            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15)
+//            ])
         
         NSLayoutConstraint.activate([
             tOrD.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -116,19 +119,7 @@ class ReviewSetViewController: UIViewController {
             label.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
-        
 
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

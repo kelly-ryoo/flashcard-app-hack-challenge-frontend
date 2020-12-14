@@ -18,11 +18,11 @@ class DeckTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        containerView.layer.backgroundColor = UIColor.white.cgColor
+        containerView.layer.backgroundColor = UIColor(red: 169/255, green: 202/255, blue: 151/255, alpha: 1).cgColor
         containerView.clipsToBounds = true
         containerView.layer.masksToBounds = true
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = UIColor(red: 155/255, green: 184/255, blue: 152/255, alpha: 1) // #9bb898
         contentView.addSubview(containerView)
         
         term.textColor = UIColor.black
@@ -30,7 +30,7 @@ class DeckTableViewCell: UITableViewCell {
         term.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(term)
         
-        definition.textColor = UIColor.gray
+        definition.textColor = UIColor(red: 75, green: 75, blue: 75, alpha: 1)
         definition.font = UIFont.systemFont(ofSize: 18)
         definition.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(definition)
@@ -57,7 +57,7 @@ class DeckTableViewCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             term.topAnchor.constraint(equalTo: containerView.topAnchor, constant: padding),
-            term.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding)
+            term.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 25)
         ])
         
         NSLayoutConstraint.activate([
@@ -65,6 +65,11 @@ class DeckTableViewCell: UITableViewCell {
             definition.leadingAnchor.constraint(equalTo: term.leadingAnchor)
         ])
         
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
     }
     
     func configure(for set: Deck, index: Int){

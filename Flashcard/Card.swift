@@ -8,9 +8,12 @@
 import Foundation
 
 struct Card: Codable {
-    var id: Int
     var front: String
     var back: String
+    
+    func toDict() -> [String: String] {
+            return ["front": front ?? "", "back": back ?? ""]
+        }
 }
 
 //struct CardDataResponse: Codable {

@@ -25,6 +25,9 @@
 		C7D203E62584491800D80880 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D203E52584491800D80880 /* Card.swift */; };
 		C7D203EE258449AF00D80880 /* DeckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D203ED258449AF00D80880 /* DeckTableViewCell.swift */; };
 		C7D203F525844DF700D80880 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D203F425844DF700D80880 /* StartupViewController.swift */; };
+		C7D204022586965800D80880 /* CreateDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D204012586965800D80880 /* CreateDeckViewController.swift */; };
+		C7D204052586AF6700D80880 /* NewCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D204042586AF6700D80880 /* NewCardTableViewCell.swift */; };
+		C7D204082586FA0300D80880 /* DeckRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D204072586FA0300D80880 /* DeckRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		C7D203E52584491800D80880 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		C7D203ED258449AF00D80880 /* DeckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckTableViewCell.swift; sourceTree = "<group>"; };
 		C7D203F425844DF700D80880 /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
+		C7D204012586965800D80880 /* CreateDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDeckViewController.swift; sourceTree = "<group>"; };
+		C7D204042586AF6700D80880 /* NewCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardTableViewCell.swift; sourceTree = "<group>"; };
+		C7D204072586FA0300D80880 /* DeckRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,21 +103,24 @@
 				5D24C454257F08B70012C6D3 /* AppDelegate.swift */,
 				5D24C456257F08B70012C6D3 /* SceneDelegate.swift */,
 				C7D203F425844DF700D80880 /* StartupViewController.swift */,
+				C7D204012586965800D80880 /* CreateDeckViewController.swift */,
 				5D58DB7E25847903003AB524 /* LoginViewController.swift */,
 				5D58DB812584A7DF003AB524 /* SignUpViewController.swift */,
 				5D24C458257F08B70012C6D3 /* ViewController.swift */,
 				5D24C46F257F08EC0012C6D3 /* SetViewController.swift */,
 				5D5918F72585C88F00D8FFD6 /* ReviewSetViewController.swift */,
+				C7D204042586AF6700D80880 /* NewCardTableViewCell.swift */,
 				5D24C469257F08E20012C6D3 /* HomeSetsTableViewCell.swift */,
 				C7D203ED258449AF00D80880 /* DeckTableViewCell.swift */,
+				C7D204072586FA0300D80880 /* DeckRequest.swift */,
 				5D24C46C257F08E80012C6D3 /* Deck.swift */,
 				C7D203E52584491800D80880 /* Card.swift */,
+				5D58DB8425853D1A003AB524 /* User.swift */,
 				5D24C472257F08F10012C6D3 /* NetworkManager.swift */,
 				5D24C45D257F08BB0012C6D3 /* Assets.xcassets */,
-				5D24C45A257F08B70012C6D3 /* Main.storyboard */,
-				5D58DB8425853D1A003AB524 /* User.swift */,
-				5D24C45F257F08BB0012C6D3 /* LaunchScreen.storyboard */,
 				5D24C462257F08BB0012C6D3 /* Info.plist */,
+				5D24C45A257F08B70012C6D3 /* Main.storyboard */,
+				5D24C45F257F08BB0012C6D3 /* LaunchScreen.storyboard */,
 			);
 			path = Flashcard;
 			sourceTree = "<group>";
@@ -243,12 +252,15 @@
 				5D24C46D257F08E80012C6D3 /* Deck.swift in Sources */,
 				5D24C470257F08EC0012C6D3 /* SetViewController.swift in Sources */,
 				5D24C459257F08B70012C6D3 /* ViewController.swift in Sources */,
+				C7D204022586965800D80880 /* CreateDeckViewController.swift in Sources */,
 				C7D203EE258449AF00D80880 /* DeckTableViewCell.swift in Sources */,
 				C7D203F525844DF700D80880 /* StartupViewController.swift in Sources */,
 				5D24C473257F08F10012C6D3 /* NetworkManager.swift in Sources */,
 				5D58DB822584A7DF003AB524 /* SignUpViewController.swift in Sources */,
 				5D24C46A257F08E20012C6D3 /* HomeSetsTableViewCell.swift in Sources */,
 				5D24C455257F08B70012C6D3 /* AppDelegate.swift in Sources */,
+				C7D204052586AF6700D80880 /* NewCardTableViewCell.swift in Sources */,
+				C7D204082586FA0300D80880 /* DeckRequest.swift in Sources */,
 				5D24C457257F08B70012C6D3 /* SceneDelegate.swift in Sources */,
 				C7D203E62584491800D80880 /* Card.swift in Sources */,
 				5D58DB7F25847903003AB524 /* LoginViewController.swift in Sources */,

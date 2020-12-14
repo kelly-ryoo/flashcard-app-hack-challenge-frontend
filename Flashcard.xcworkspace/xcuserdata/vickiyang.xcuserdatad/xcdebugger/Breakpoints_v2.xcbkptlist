@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "930F686A-5A29-4C28-993D-99885A118E5F"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AA4DCEA2-A7FD-4EE2-A865-C90083237AB4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Flashcard/LoginViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "authenticateLogin()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AA4DCEA2-A7FD-4EE2-A865-C90083237AB4 - f336ac9a3819aa82"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Flashcard.LoginViewController.authenticateLogin() -&gt; ()"
+                  moduleName = "Flashcard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vickiyang/Documents/flashcard-app-hack-challenge-frontend/Flashcard/LoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "AA4DCEA2-A7FD-4EE2-A865-C90083237AB4 - 66efd8eee37b455b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Flashcard.User) -&gt; () in Flashcard.LoginViewController.authenticateLogin() -&gt; ()"
+                  moduleName = "Flashcard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vickiyang/Documents/flashcard-app-hack-challenge-frontend/Flashcard/LoginViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "480">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

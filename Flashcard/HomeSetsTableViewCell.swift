@@ -10,8 +10,10 @@ import UIKit
 class HomeSetsTableViewCell: UITableViewCell {
     
     private let containerView = UIView()
+    
     private let name = UILabel()
     private let numOfTerms = UILabel()
+    
     private let seeTerms = UIButton()
     private let review = UIButton()
     
@@ -27,16 +29,17 @@ class HomeSetsTableViewCell: UITableViewCell {
         containerView.clipsToBounds = true
         containerView.layer.masksToBounds = true
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.backgroundColor = UIColor(red: 255/255, green: 211/255, blue: 228/255, alpha: 1.0) /* #ffd3e4 */
+        containerView.backgroundColor = UIColor(red: 169/255, green: 202/255, blue: 151/255, alpha: 1.0) /* #a9ca97 */
 
         contentView.addSubview(containerView)
         
         name.textColor = UIColor.black
+        name.font = UIFont.systemFont(ofSize: 20)
         name.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(name)
         
-        numOfTerms.textColor = UIColor.gray
-        numOfTerms.font = UIFont.systemFont(ofSize: 13)
+        numOfTerms.textColor = UIColor.black
+        numOfTerms.font = UIFont.systemFont(ofSize: 14)
         numOfTerms.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(numOfTerms)
         
@@ -57,7 +60,7 @@ class HomeSetsTableViewCell: UITableViewCell {
 
     private func setUpConstraints(){
         
-        let padding: CGFloat = 10
+        let padding: CGFloat = 15
 
         
         NSLayoutConstraint.activate([
@@ -82,14 +85,15 @@ class HomeSetsTableViewCell: UITableViewCell {
             numOfTerms.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: padding)
         ])
         NSLayoutConstraint.activate([
-            seeTerms.topAnchor.constraint(equalTo: containerView.centerYAnchor),
+            seeTerms.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -padding),
+            //seeTerms.topAnchor.constraint(equalTo: containerView.centerYAnchor),
             //review.leadingAnchor.constraint(equalTo: numOfTerms.trailingAnchor, constant: padding),
             seeTerms.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15)
         ])
         
         NSLayoutConstraint.activate([
-            review.topAnchor.constraint(equalTo: seeTerms.topAnchor, constant: 10),
-            review.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding)
+            review.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: padding),
+            review.trailingAnchor.constraint(equalTo: seeTerms.trailingAnchor)
         ])
         
     }

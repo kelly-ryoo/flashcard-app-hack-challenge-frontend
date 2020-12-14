@@ -13,6 +13,7 @@ class NetworkManager {
     private static let getUserH = "https://flashcard-app-backend.herokuapp.com/users/"
     private static let postUserLoginH = "https://flashcard-app-backend.herokuapp.com/login/"
     private static let postUserH = "https://flashcard-app-backend.herokuapp.com/register/"
+    private static let postDeck = "https://flashcard-app-backend.herokuapp.com/decks/"
 
 
     /*
@@ -115,6 +116,35 @@ class NetworkManager {
      }
     }
     
-    
+    static func postDeck(deckReq: DeckRequest, completion: @escaping (Deck) -> Void) {
+     
+        let parameters: Parameters = [
+            "name": deckReq.name,
+            "tag_ids": deckReq.tag_ids,
+            "cards": deckReq.cards.map { $0.toDict() }
+        ]
+        
+        let sessionT = User.current?.sessionToken
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(sessionT ?? "")",
+            //"Accept": "application/json"
+        ]
+        
+        AF.request(postDeck, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseData { response in
+            switch response.result {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                if let deckData = try? jsonDecoder.decode(DeckDataResponse.self, from: data) {
+                    let data = deckData.data
+                    completion(data)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+//                if "Session token expired" 
+            }
+
+     }
+    }
     
 }
