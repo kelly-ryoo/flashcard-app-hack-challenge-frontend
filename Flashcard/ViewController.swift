@@ -220,6 +220,7 @@ class ViewController: UIViewController {
     func refreshViewController() {
         homeSets = User.current?.decks ?? []
         homeSetsTableView.reloadData()
+        viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -234,14 +235,14 @@ extension ViewController: UITableViewDelegate {
         return 100
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let fs = homeSets[indexPath.row]
-        let cell = tableView.cellForRow(at: indexPath) as! HomeSetsTableViewCell
-        
-        //let setViewController = SetViewController(fs: fs)
-        //navigationController?.pushViewController(setViewController, animated: true)
-        //don't need it cuz we present??
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let fs = homeSets[indexPath.row]
+//        let cell = tableView.cellForRow(at: indexPath) as! HomeSetsTableViewCell
+//
+//        //let setViewController = SetViewController(fs: fs)
+//        //navigationController?.pushViewController(setViewController, animated: true)
+//        //don't need it cuz we present??
+//    }
 }
 
 extension ViewController: UITableViewDataSource {

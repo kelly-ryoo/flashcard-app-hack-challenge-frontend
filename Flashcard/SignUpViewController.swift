@@ -79,27 +79,17 @@ class SignUpViewController: UIViewController {
             nameTextField.backgroundColor = .white
             nameTextField.text = nil
             nameTextField.placeholder = "Please enter your full name"
-            //nameTextField.setUnderline()
-            //nameTextField.addBottomBorder()
-            //nameTextField.backgroundColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
             view.addSubview(nameTextField)
             
             emailTextField.translatesAutoresizingMaskIntoConstraints = false
             emailTextField.backgroundColor = .white
             emailTextField.text = nil
             emailTextField.placeholder = "email@example.com"
-            //emailTextField.setUnderLine()
-            //emailTextField.backgroundColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
             view.addSubview(emailTextField)
             
             passwordTextField.translatesAutoresizingMaskIntoConstraints = false
             passwordTextField.backgroundColor = .white
-            //passwordTextField.text = nil
             passwordTextField.placeholder = "************"
-            //passwordTextField.isSecureTextEntry = true
-            //passwordTextField.textContentType = .oneTimeCode
-            //passwordTextField.setUnderLine()
-            //passwordTextField.backgroundColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
             view.addSubview(passwordTextField)
             
             signUpButton.setTitle("Sign Up", for: .normal)
@@ -228,8 +218,10 @@ class SignUpViewController: UIViewController {
         func postRequest(){
             if emailText != "" && passwordText != ""{
                 //POST REQUEST TO SEND DATA
-                NetworkManager.postUserSignUp(name: nameText, email: emailText, pass: passwordText) { (isLoggedIn) in
-                    if isLoggedIn == true{
+                NetworkManager.postUserSignUp(name: nameText, email: emailText, pass: passwordText) { (userData) in
+                    User.current = userData
+                    print("it goes to authentication")
+                    DispatchQueue.main.async {
                         let vc = ViewController()
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
@@ -237,53 +229,4 @@ class SignUpViewController: UIViewController {
             }
         }
 
-    }
-
-extension UITextField {
-//    func setUnderLine() {
-//        let border = CALayer()
-//        let width = CGFloat(0.5)
-//        border.borderColor = UIColor.lightGray.cgColor
-//        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width-10, height: self.frame.size.height)
-//
-//        border.borderWidth = width
-//        self.layer.addSublayer(border)
-//        self.layer.masksToBounds = true
-//    }
-    func setUnderLine(){
-        let border = CALayer()
-        let lineWidth = CGFloat(0.5)
-        border.borderColor = UIColor.lightGray.cgColor
-        border.bounds = CGRect(x: 0, y: 0, width:  self.frame.size.width, height: self.frame.size.height)
-        border.frame = CGRect(x: 0, y: self.frame.size.height - lineWidth, width:  self.frame.size.width, height: self.frame.size.height)
-        border.borderWidth = lineWidth
-        self.layer.addSublayer(border)
-        self.layer.masksToBounds = true
-        }
-    func underline(borderColor: UIColor) {
-            
-            self.borderStyle = UITextField.BorderStyle.none
-            self.backgroundColor = UIColor.clear
-            
-            let borderLine = UIView()
-            let height = 2.0
-            borderLine.frame = CGRect(x: 0, y: Double(self.frame.height) - height, width: Double(self.frame.width), height: height)
-            
-            borderLine.backgroundColor = borderColor
-            self.addSubview(borderLine)
-        }
-    func setUnderline() {
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0.0, y: self.frame.height - 1, width: self.frame.width, height: 1.0)
-        bottomLine.backgroundColor = UIColor.white.cgColor
-        self.borderStyle = UITextField.BorderStyle.none
-        self.layer.addSublayer(bottomLine)
-    }
-    func addBottomBorder(){
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0, y: self.frame.size.height - 1, width: self.frame.size.width, height: 1)
-        bottomLine.backgroundColor = UIColor.black.cgColor
-        self.borderStyle = .none
-        self.layer.addSublayer(bottomLine)
-    }
 }

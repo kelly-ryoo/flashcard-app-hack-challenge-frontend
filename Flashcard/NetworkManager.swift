@@ -91,7 +91,7 @@ class NetworkManager {
     }
 
     //sign up
-    static func postUserSignUp(name: String, email: String, pass: String, completion: @escaping (Bool) -> Void) {
+    static func postUserSignUp(name: String, email: String, pass: String, completion: @escaping (User) -> Void) {
         print(email)
         print(pass)
         print(name)
@@ -104,15 +104,17 @@ class NetworkManager {
         
         AF.request(postUserH, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseData { response in
      //AF.request(postUserH, parameters: parameters).validate().responseJSON { response in
-       switch response.result {
-       case .success(let data):
-            print("success signing up")
-            completion(true)
-       case .failure(let error):
-            print(error.localizedDescription)
-            print("FAILED")
-            completion(false)
-       }
+            switch response.result {
+            case .success(let data):
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+                if let userData = try? jsonDecoder.decode(UserDataResponse.self, from: data) {
+                    let data = userData.data
+                    completion(data)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
      }
     }
     
